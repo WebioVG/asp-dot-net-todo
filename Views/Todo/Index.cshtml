@@ -1,0 +1,24 @@
+@model IEnumerable<tp_todo_list.Models.Todo>
+
+@{
+    ViewData["mainTitle"] = "Encore des todos, youhou !";
+}
+
+<h1>@ViewData["mainTitle"]</h1>
+
+@if (Model != null && Model.Any())
+{
+    <ul>
+        @foreach (var todo in Model)
+        {
+            <li>
+                <strong>Contenu :</strong> @todo.Content <br />
+                <strong>Statut :</strong> @todo.Status
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>Pas de todo.</p>
+}

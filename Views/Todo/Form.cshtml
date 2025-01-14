@@ -1,0 +1,24 @@
+@model Todo
+
+@{
+    ViewData["mainTitle"] = "Vraiment ? Tu veux ajouter une todo ?";
+}
+
+<h1>@ViewData["mainTitle"]</h1>
+
+<form action="" method="POST">
+    <div>
+        <label asp-for="Content">Contenu</label>
+        <input type="text" name="Content" id="Content">
+    </div>
+    <div>
+        <label asp-for="Status">Contenu</label>
+        <select name="Status" id="Status">
+            <option value="en cours">En cours</option>
+            <option value="terminé">Terminé</option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Ajouter</button>
+    </div>
+</form>
