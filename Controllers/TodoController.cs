@@ -14,9 +14,20 @@ public class TodoController : Controller
     }
     
     [HttpGet]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int page = 1, int pageSize = 2)
     {
-        var todos = await _context.Todos.ToListAsync();
+        var totalItems = await _context.Todos.CountAsync();
+
+        var todos = await _context.Todos
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+        ViewBag.CurrentPage = page;
+        ViewBag.PageSize = pageSize;
+        ViewBag.TotalItems = totalItems;
+        ViewBag.TotalPages = (int) Math.Ceiling((double) totalItems / pageSize);
+
         return View(todos);
     }
 

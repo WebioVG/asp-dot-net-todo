@@ -2,6 +2,9 @@
 
 @{
     ViewData["mainTitle"] = "Encore des todos, youhou !";
+    int currentPage = ViewBag.CurrentPage ?? 1;
+    int pageSize = ViewBag.PageSize ?? 2;
+    int totalPages = ViewBag.TotalPages ?? 1;
 }
 
 <h1>@ViewData["mainTitle"]</h1>
@@ -17,6 +20,31 @@
             </li>
         }
     </ul>
+        
+    <nav>
+        <ul>
+            @if (currentPage > 1)
+            {
+                <li style="margin-right: 10px">
+                    <a href="?page=@(currentPage - 1)&pageSize=@pageSize">Précédent</a>
+                </li>
+            }
+
+            @for (var i = 1; i <= totalPages; i++)
+            {
+                <li style="margin-right: 10px">
+                    <a href="?page=@i&pageSize=@pageSize">@i</a>
+                </li>
+            }
+
+            @if (currentPage < totalPages)
+            {
+                <li>
+                    <a href="?page=@(currentPage + 1)&pageSize=@pageSize">Suivant</a>
+                </li>
+            }
+        </ul>
+    </nav>
 }
 else
 {
