@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using tp_todo_list;
 using tp_todo_list.Models;
+using tp_todo_list.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSession();
@@ -20,6 +21,7 @@ builder.Services.AddIdentity<User, IdentityRole>()
     .AddDefaultTokenProviders();
 
 // Add services to the container.
+builder.Services.AddScoped<ITodoRepository, TodoRepository>();
 builder.Services.AddControllersWithViews();
 
 // Add database connection string
