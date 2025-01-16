@@ -4,13 +4,13 @@ using tp_todo_list.Models;
 
 namespace tp_todo_list.Controllers;
 
-public class UserController : Controller
+public class AccountController : Controller
 {
-    private readonly ILogger<UserController> _logger;
+    private readonly ILogger<AccountController> _logger;
     private readonly UserManager<User> _userManager;
     private readonly SignInManager<User> _signInManager;
 
-    public UserController(UserManager<User> userManager, SignInManager<User> signInManager, ILogger<UserController> logger)
+    public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, ILogger<AccountController> logger)
     {
         _userManager = userManager;
         _signInManager = signInManager;
