@@ -75,9 +75,9 @@ public class UserController : Controller
     }
 
     [HttpGet]
-    public IActionResult Logout()
+    public async Task<IActionResult> Logout()
     {
-        HttpContext.Session.Clear();
+        await _signInManager.SignOutAsync();        
         return RedirectToAction("Login");
     }
 }

@@ -8,6 +8,8 @@ builder.Services.AddSession();
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/User/Login";
+    options.LogoutPath = "/User/Logout";
+    options.AccessDeniedPath = "/User/Login";
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
     options.Cookie.SameSite = SameSiteMode.Strict;
@@ -44,7 +46,7 @@ app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseSession();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
@@ -53,6 +55,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Todo}/{action=Index}/{id?}")
     .WithStaticAssets();
-
 
 app.Run();

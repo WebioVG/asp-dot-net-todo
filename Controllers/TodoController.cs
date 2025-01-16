@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using tp_todo_list.Models;
@@ -14,6 +15,7 @@ public class TodoController : Controller
     }
     
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> Index(int page = 1, int pageSize = 2)
     {
         var totalItems = await _context.Todos.CountAsync();
@@ -32,12 +34,14 @@ public class TodoController : Controller
     }
 
     [HttpGet]
+    [Authorize]
     public IActionResult Form()
     {
         return View();
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Form(Todo todo)
     {
         if (ModelState.IsValid)
