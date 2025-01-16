@@ -1,0 +1,25 @@
+@model LoginViewModel
+
+@{
+    Layout = null;
+}
+
+<form action="" method="POST">
+    <div>
+        @if (!string.IsNullOrEmpty(ViewBag.Message as string))
+        {
+            <p style="color: red;">@ViewBag.Message</p>
+        }
+    </div>
+    <div>
+        <label asp-for="Email">Email</label>
+        <input type="email" name="email" id="email">
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="Password">Mot de passe</label>
+        <input type="password" name="password" id="password">
+        <span asp-validation-for="Password"></span>
+    </div>
+    <button type="submit">Connexion</button>
+</form>

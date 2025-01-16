@@ -1,0 +1,28 @@
+@model RegisterViewModel
+
+@{
+    ViewBag.Title = "Création de compte";
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form method="POST">
+    <div>
+        <label asp-for="Email">Email</label>
+        <input type="email" asp-for="Email" required="required">
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="Password">Mot de passe</label>
+        <input type="password" asp-for="Password" required="required">
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <label asp-for="ConfirmPassword">Confirmer le mot de passe</label>
+        <input type="password" asp-for="ConfirmPassword" required="required">
+        <span asp-validation-for="ConfirmPassword"></span>
+    </div>
+    <div asp-validation-summary="All"></div>
+    <button type="submit">Valider</button>
+</form>
