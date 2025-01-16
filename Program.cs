@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using tp_todo_list;
 using tp_todo_list.Models;
 using tp_todo_list.Repositories;
+using tp_todo_list.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSession();
@@ -22,6 +23,7 @@ builder.Services.AddIdentity<User, IdentityRole>()
 
 // Add services to the container.
 builder.Services.AddScoped<ITodoRepository, TodoRepository>();
+builder.Services.AddScoped<ITodoService, TodoService>();
 builder.Services.AddControllersWithViews();
 
 // Add database connection string

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("tp-todo-list")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+90983d970fe381e34780cb2c33c331b623fdfe33")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0da3e1a49e08859ecb3ba0fbe1581c41c1178da8")]
 [assembly: System.Reflection.AssemblyProductAttribute("tp-todo-list")]
 [assembly: System.Reflection.AssemblyTitleAttribute("tp-todo-list")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

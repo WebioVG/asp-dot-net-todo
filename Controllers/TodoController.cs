@@ -1,26 +1,25 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using tp_todo_list.Models;
-using tp_todo_list.Repositories;
+using tp_todo_list.Services;
 
 namespace tp_todo_list.Controllers;
 
 public class TodoController : Controller
 {
-    private readonly ITodoRepository _todoRepository;
+    private readonly ITodoService _todoService;
 
-    public TodoController(ITodoRepository todoRepository)
+    public TodoController(ITodoService todoService)
     {
-        _todoRepository = todoRepository;
+        _todoService = todoService;
     }
     
     [HttpGet]
     [Authorize]
     public async Task<IActionResult> Index(int page = 1, int pageSize = 2)
     {
-        var totalItems = await _todoRepository.Count();
-        var todos = await _todoRepository.FindWithPagination(page, pageSize);
+        var totalItems = await _todoService.GetTotalCount();
+        var todos = await _todoService.FindWithPagination(page, pageSize);
 
         ViewBag.CurrentPage = page;
         ViewBag.PageSize = pageSize;
@@ -43,7 +42,7 @@ public class TodoController : Controller
     {
         if (ModelState.IsValid)
         {
-            await _todoRepository.Add(todo);
+            await _todoService.CreateTodo(todo);
             return RedirectToAction(nameof(Index));
         }
         return View(todo);
